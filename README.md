@@ -30,14 +30,13 @@ No modules.
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_github_owner"></a> [github\_owner](#input\_github\_owner) | n/a | `string` | `"erasmoXXXXXX"` | no |
-| <a name="input_github_token"></a> [github\_token](#input\_github\_token) | n/a | `string` | `"gho_XXXXXXX"` | no |
+No inputs.
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_repository"></a> [repository](#output\_repository) | Example repository JSON blob |
+| <a name="output_github_repository_ids"></a> [github\_repository\_ids](#output\_github\_repository\_ids) | n/a |
+| <a name="output_github_team_ids"></a> [github\_team\_ids](#output\_github\_team\_ids) | n/a |
+| <a name="output_github_team_membership_info"></a> [github\_team\_membership\_info](#output\_github\_team\_membership\_info) | n/a |
 <!-- END_TF_DOCS -->

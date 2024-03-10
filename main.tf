@@ -91,5 +91,5 @@ resource "github_team_repository" "team_repo" {
   team_id    = github_team.team[each.value.team].id
   repository = each.value.name
   permission = "push"
-  
+
 }
