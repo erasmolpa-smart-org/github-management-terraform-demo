@@ -1,0 +1,39 @@
+name: "Organization Demo"
+ 
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+env:
+
+ TF_LOG: INFO
+
+ 
+jobs:
+  demo-repo-creation:
+   name: "Deploying Cluster and tasks"
+   runs-on: ubuntu-latest
+
+   steps:
+     - name: Checkout the repository to the runner
+       uses: actions/checkout@v2
+ 
+     - name: Terraform init
+       run: terraform init -backend-config="backend.hcl"
+     
+     - name: Terraform format
+       run: terraform fmt -check
+    
+     - name: Terraform validate
+       run: terraform validate
+     
+     - name: Terraform plan
+       run: terraform plan 
+       
+     - name: Terraform apply
+       run: terraform apply -auto-approve
+       env:
+        TF_VAR_username: ${{ secrets.rds_username }}
+        TF_VAR_password: ${{ secrets.rds_password }}       
+     
