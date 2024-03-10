@@ -30,7 +30,10 @@ No modules.
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_github_owner"></a> [github\_owner](#input\_github\_owner) | n/a | `string` | `"erasmoXXXXXX"` | no |
+| <a name="input_github_token"></a> [github\_token](#input\_github\_token) | n/a | `string` | `"gho_XXXXXXX"` | no |
 
 ## Outputs
 
