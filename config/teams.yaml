@@ -1,0 +1,16 @@
+teams:
+  frontend_team:
+    name: "frontend_team"
+    description: "Team for frontend developers"
+    privacy: "closed"
+    members:
+      - username: "frontdev-smart"
+        role: "member"
+
+  backend_team:
+    name: "backend_team"
+    description: "Team for backend developers"
+    privacy: "closed"
+    members:
+      - username: "backdev-smart"
+        role: "member"

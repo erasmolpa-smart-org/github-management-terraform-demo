@@ -1,0 +1,5 @@
+members:
+  - username: "frontdev-smart"
+    role: "member"
+  - username: "backdev-smart"
+    role: "member"
