@@ -56,14 +56,14 @@ resource "github_repository" "github-management" {
   vulnerability_alerts = true
 
   #!FIXME. Enabling the security scan it makes the apply fail.
-  security_and_analysis {
-    secret_scanning {
-      status = "disabled"
-    }
-    secret_scanning_push_protection {
-      status = "disabled"
-    }
-  }
+  # security_and_analysis {
+  #    secret_scanning {
+  #      status = "disabled"
+  #    }
+  #    secret_scanning_push_protection {
+  #      status = "disabled"
+  #    }
+  #  }
 }
 
 resource "github_branch_protection" "github-management-branch-protection" {
@@ -89,7 +89,7 @@ resource "github_team_repository" "team_repo" {
     for item in local.flattened_data :
     "${item.repository_name}-${item.team_name}" => item
   }
-  team_id    = each.value.team_name
+  team_id    = lookup(github_team.team, each.value.team_name, null) != null ? github_team.team[each.value.team_name].id : null
   repository = each.value.repository_name
   permission = each.value.permission
 }
