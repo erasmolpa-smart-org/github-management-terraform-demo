@@ -5,7 +5,7 @@ teams:
     privacy: "closed"
     members:
       - username: "erasmolpa"
-        role: "admin"
+        role: "maintainer"
       - username: "erasmodominguezlpafortesting"
         role: "member"
 
