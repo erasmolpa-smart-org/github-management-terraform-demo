@@ -28,7 +28,7 @@ resource "github_team_membership" "members" {
 
   team_id = github_team.team[each.key].id
 
-  username = each.value[0].username 
+  username = each.value[0].username
   role     = each.value[0].role
 }
 
@@ -84,12 +84,11 @@ resource "github_repository_tag_protection" "github-management-tag-protection" {
 }
 
 resource "github_team_repository" "team_repo" {
-  for_each = {
-    for permission in local.teams_repository_permission_data.repository_permissions :
-    "${permission.repo_name}-${permission.team_name}" => permission
+    for_each = {
+    for item in local.flattened_data :
+    "${item.repository_name}-${item.team_name}" => item
   }
-
-  team_id    = github_team.team[each.value.team_name].id
-  repository = each.value.repo_name
+  team_id    = each.value.team_name
+  repository = each.value.repository_name
   permission = each.value.permission
 }

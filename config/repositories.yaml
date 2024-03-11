@@ -2,20 +2,11 @@ organization_repositories:
   - name: "voxsamrt-service-api"
     description: "Fronted main app repository"
     visibility: "private"
-    has_issues: true
-    has_wiki: true
-    has_project: true
 
   - name: "voxsmart-service-ui"
     description: "Backend core Framework team"
     visibility: "private"
-    has_issues: true
-    has_wiki: true
-    has_project: true
 
   - name: "voxsmart-service-sdk"
     description: "Backend core Framework team"
     visibility: "pubic"
-    has_issues: true
-    has_wiki: true
-    has_project: true

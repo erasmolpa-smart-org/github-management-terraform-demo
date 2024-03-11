@@ -5,3 +5,4 @@ https://spacelift.io/blog/terraform-github#managing-github-repositories--challen
 https://medium.com/@dgmorales/managing-a-large-github-organization-with-terraform-part-2-2204d453286a
 https://github.com/Nklya/terraform-github-provider-examples/blob/master/main.tf
 https://discuss.hashicorp.com/t/create-new-map-from-a-nested-structure-with-for-loops/9441/2
+https://discuss.hashicorp.com/t/how-to-deal-with-nested-for-each-loops-in-dependent-ressources/50551
