@@ -3,5 +3,3 @@ members:
     role: "admin"
   - username: "erasmodominguezdc"
     role: "admin"
-  - username: "erasmodominguezlpafortesting"
-    role: "member"
