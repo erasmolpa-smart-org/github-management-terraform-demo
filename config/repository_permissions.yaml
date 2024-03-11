@@ -1,5 +1,5 @@
 repositories:
-  - name: "voxsamrt-service-api"
+  - name: "voxsmart-service-api"
     teams:
       - name: "backend_team"
         permission: "admin"

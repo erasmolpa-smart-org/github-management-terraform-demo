@@ -1,12 +1,12 @@
 organization_repositories:
-  - name: "voxsamrt-service-api"
-    description: "Fronted main app repository"
+  - name: "voxsmart-service-api"
+    description: "Main business Service API"
     visibility: private
 
   - name: "voxsmart-service-ui"
-    description: "Backend core Framework team"
+    description: "Front Service UI"
     visibility: private
 
   - name: "voxsmart-service-sdk"
-    description: "Backend core Framework team"
+    description: "Backend core SDK Framework"
     visibility: public

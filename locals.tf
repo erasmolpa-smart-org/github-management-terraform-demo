@@ -4,7 +4,7 @@ locals {
   teams_data                       = yamldecode(file("${path.module}/config/teams.yaml"))
   teams_repository_permission_data = yamldecode(file("${path.module}/config/repository_permissions.yaml"))
 
-  flattened_data = flatten([
+  team_repository_permissions = flatten([
     for repository in local.teams_repository_permission_data.repositories :
     [
       for team in repository.teams :
