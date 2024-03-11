@@ -1,0 +1,18 @@
+repositories:
+  - name: "voxsamrt-service-api"
+    teams:
+      - name: "backend_team"
+        permission: "admin"
+      - name: "frontend_team"
+        permission: "pull"
+  - name: "voxsmart-service-ui"
+    teams:
+      - name: "frontend_team"
+        permission: "admin"
+  - name: "voxsmart-service-sdk"
+    teams:
+      - name: "frontend_team"
+        permission: "push"
+      - name: "backend_team"
+        permission: "push"
+

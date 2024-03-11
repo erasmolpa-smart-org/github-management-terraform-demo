@@ -28,14 +28,14 @@ resource "github_team_membership" "members" {
 
   team_id = github_team.team[each.key].id
 
-  username = each.value[0].username # Accede al primer elemento de la lista de miembros
-  role     = each.value[0].role     # Accede al primer elemento de la lista de miembros
+  username = each.value[0].username
+  role     = each.value[0].role
 }
 
 resource "github_repository" "github-management" {
   for_each = {
-    for idx, repo in local.repositories_data.organization_repositories :
-    idx => repo
+    for repo in local.repositories_data.organization_repositories :
+    repo.name => repo
   }
 
   name               = each.value.name
@@ -67,9 +67,9 @@ resource "github_repository" "github-management" {
 }
 
 resource "github_branch_protection" "github-management-branch-protection" {
-  count = length(local.repositories_data.organization_repositories)
+  for_each = toset([for repo in local.repositories_data.organization_repositories : repo.name])
 
-  repository_id          = github_repository.github-management[count.index].node_id
+  repository_id          = github_repository.github-management[each.key].node_id
   pattern                = "main"
   enforce_admins         = true
   allows_deletions       = false
@@ -77,20 +77,19 @@ resource "github_branch_protection" "github-management-branch-protection" {
 }
 
 resource "github_repository_tag_protection" "github-management-tag-protection" {
-  count = length(local.repositories_data.organization_repositories)
+  for_each = toset([for repo in local.repositories_data.organization_repositories : repo.name])
 
-  repository = github_repository.github-management[count.index].name
+  repository = github_repository.github-management[each.key].name
   pattern    = "v*"
 }
 
+
 resource "github_team_repository" "team_repo" {
-  for_each = {
-    for repo in local.repositories_data.organization_repositories :
-    "${repo.team}-${repo.name}" => repo
+    for_each = {
+    for item in local.flattened_data :
+    "${item.repository_name}-${item.team_name}" => item
   }
-
-  team_id    = github_team.team[each.value.team].id
-  repository = each.value.name
-  permission = "push"
-
+  team_id    = each.value.team_name
+  repository = each.value.repository_name
+  permission = each.value.permission
 }
