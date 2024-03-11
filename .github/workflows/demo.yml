@@ -32,5 +32,5 @@ jobs:
      - name: Terraform apply
        run: terraform apply -auto-approve
        env:
-        TF_VAR_github_owner: ${{ secrets.github_owner }}  
-        TF_VAR_github_token: ${{ secrets.github_token }}
+        TF_VAR_github_owner: ${{ secrets.GH_OWNER }}  
+        TF_VAR_github_token: ${{ secrets.GH_TOKEN }}
