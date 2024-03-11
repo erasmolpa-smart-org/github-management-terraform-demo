@@ -85,7 +85,7 @@ resource "github_repository_tag_protection" "github-management-tag-protection" {
 
 
 resource "github_team_repository" "team_repo" {
-    for_each = {
+  for_each = {
     for item in local.flattened_data :
     "${item.repository_name}-${item.team_name}" => item
   }

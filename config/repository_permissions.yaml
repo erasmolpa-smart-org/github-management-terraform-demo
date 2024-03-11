@@ -15,4 +15,3 @@ repositories:
         permission: "push"
       - name: "backend_team"
         permission: "push"
-
