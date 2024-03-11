@@ -20,7 +20,6 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [github_branch_protection.github-management-branch-protection](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/branch_protection) | resource |
 | [github_membership.members](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/membership) | resource |
 | [github_repository.github-management](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository) | resource |
 | [github_team.team](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/team) | resource |
