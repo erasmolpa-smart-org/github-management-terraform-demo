@@ -1,4 +1,4 @@
-name: "Organization Demo"
+name: "Organization Demo. GH Governance"
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ env:
 
 jobs:
   demo-repo-creation:
-   name: "Deploying Cluster and tasks"
+   name: "Demo.Creating teams and repositories"
    runs-on: ubuntu-latest
 
    steps:
