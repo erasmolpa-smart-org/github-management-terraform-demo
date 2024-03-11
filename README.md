@@ -37,9 +37,5 @@ No modules.
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_github_repository_ids"></a> [github\_repository\_ids](#output\_github\_repository\_ids) | n/a |
-| <a name="output_github_team_ids"></a> [github\_team\_ids](#output\_github\_team\_ids) | n/a |
-| <a name="output_github_team_membership_info"></a> [github\_team\_membership\_info](#output\_github\_team\_membership\_info) | n/a |
+No outputs.
 <!-- END_TF_DOCS -->
