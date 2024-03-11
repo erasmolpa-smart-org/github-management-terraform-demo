@@ -5,7 +5,7 @@ teams:
     privacy: "closed"
     members:
       - username: "erasmolpa"
-        role: "admin"
+        role: "member"
 
   backend_team:
     name: "backend_team"
@@ -15,4 +15,4 @@ teams:
       - username: "erasmodominguezdc"
         role: "member"
       - username: "erasmolpa"
-        role: "admin"
+        role: "member"

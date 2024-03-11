@@ -21,7 +21,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [github_membership.members](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/membership) | resource |
-| [github_repository.github-management](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository) | resource |
+| [github_repository.github_repo](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository) | resource |
 | [github_team.team](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/team) | resource |
 | [github_team_membership.members](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/team_membership) | resource |
 | [github_team_repository.team_repo](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/team_repository) | resource |

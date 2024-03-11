@@ -32,7 +32,7 @@ resource "github_team_membership" "members" {
   role     = each.value[0].role
 }
 
-resource "github_repository" "github-management" {
+resource "github_repository" "github_repo" {
   for_each = {
     for repo in local.repositories_data.organization_repositories :
     repo.name => repo
@@ -42,6 +42,7 @@ resource "github_repository" "github-management" {
   description        = each.value.description
   visibility         = try(each.value.visibility, "private")
   archive_on_destroy = try(each.value.archive_on_destroy, true)
+  has_discussions    = try(each.value.has_discussions, true)
   has_issues         = try(each.value.has_issues, true)
   has_wiki           = try(each.value.has_wiki, true)
   has_projects       = try(each.value.has_wiki, true)
@@ -67,9 +68,9 @@ resource "github_repository" "github-management" {
 }
 #!FIXME. Only possible for github pro account or if we make this repos public 
 
-#resource "github_branch_protection" "github-management-branch-protection" {
+#resource "github_branch_protection" "github_repo-branch-protection" {
 #  for_each = toset([for repo in local.repositories_data.organization_repositories : repo.name])
-#  repository_id          = github_repository.github-management[each.key].node_id
+#  repository_id          = github_repository.github_repo[each.key].node_id
 #  pattern                = "main"
 #  enforce_admins         = true
 #  allows_deletions       = false
@@ -78,17 +79,17 @@ resource "github_repository" "github-management" {
 
 #!FIXME. Only possible for github pro account or if we make this repos public 
 #  Error: POST https://api.github.com/repos/***/voxsamrt-service-api/tags/protection: 403 Upgrade to GitHub Pro or make this repository public to enable this feature. []
-#resource "github_repository_tag_protection" "github-management-tag-protection" {
+#resource "github_repository_tag_protection" "github_repo-tag-protection" {
 #  for_each = toset([for repo in local.repositories_data.organization_repositories : repo.name])
 
-#  repository = github_repository.github-management[each.key].name
+#  repository = github_repository.github_repo[each.key].name
 #  pattern    = "v*"
 #}
 
 
 resource "github_team_repository" "team_repo" {
   for_each = {
-    for item in local.flattened_data :
+    for item in local.team_repository_permissions :
     "${item.repository_name}-${item.team_name}" => item
   }
   team_id    = lookup(github_team.team, each.value.team_name, null) != null ? github_team.team[each.value.team_name].id : null
