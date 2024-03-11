@@ -76,12 +76,14 @@ resource "github_branch_protection" "github-management-branch-protection" {
   require_signed_commits = true
 }
 
-resource "github_repository_tag_protection" "github-management-tag-protection" {
-  for_each = toset([for repo in local.repositories_data.organization_repositories : repo.name])
+#!FIXME. Only possible for github pro account or if we make this repos public 
+#  Error: POST https://api.github.com/repos/***/voxsamrt-service-api/tags/protection: 403 Upgrade to GitHub Pro or make this repository public to enable this feature. []
+#resource "github_repository_tag_protection" "github-management-tag-protection" {
+#  for_each = toset([for repo in local.repositories_data.organization_repositories : repo.name])
 
-  repository = github_repository.github-management[each.key].name
-  pattern    = "v*"
-}
+#  repository = github_repository.github-management[each.key].name
+#  pattern    = "v*"
+#}
 
 
 resource "github_team_repository" "team_repo" {

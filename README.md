@@ -23,7 +23,6 @@ No modules.
 | [github_branch_protection.github-management-branch-protection](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/branch_protection) | resource |
 | [github_membership.members](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/membership) | resource |
 | [github_repository.github-management](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository) | resource |
-| [github_repository_tag_protection.github-management-tag-protection](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/repository_tag_protection) | resource |
 | [github_team.team](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/team) | resource |
 | [github_team_membership.members](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/team_membership) | resource |
 | [github_team_repository.team_repo](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/team_repository) | resource |
