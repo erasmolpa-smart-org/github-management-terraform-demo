@@ -4,7 +4,7 @@ teams:
     description: "Team for frontend developers"
     privacy: "closed"
     members:
-      - username: "frontdev-smart"
+      - username: "erasmolpa"
         role: "member"
 
   backend_team:
@@ -12,5 +12,5 @@ teams:
     description: "Team for backend developers"
     privacy: "closed"
     members:
-      - username: "backdev-smart"
+      - username: "erasmodominguezdc"
         role: "member"
