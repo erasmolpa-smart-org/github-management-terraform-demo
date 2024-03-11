@@ -5,8 +5,6 @@ teams:
     privacy: "closed"
     members:
       - username: "erasmolpa"
-        role: "maintainer"
-      - username: "erasmodominguezlpafortesting"
         role: "member"
 
   backend_team:

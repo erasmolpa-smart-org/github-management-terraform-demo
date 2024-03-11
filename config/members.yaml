@@ -1,7 +1,5 @@
 members:
   - username: "erasmolpa"
-    role: "admin"
+    role: "member"
   - username: "erasmodominguezdc"
-    role: "admin"
-  - username: "erasmodominguezlpafortesting"
     role: "member"
