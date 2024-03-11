@@ -9,4 +9,4 @@ organization_repositories:
 
   - name: "voxsmart-service-sdk"
     description: "Backend core Framework team"
-    visibility: "pubic"
+    visibility: "public"

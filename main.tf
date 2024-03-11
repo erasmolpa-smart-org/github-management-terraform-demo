@@ -67,9 +67,9 @@ resource "github_repository" "github-management" {
 }
 
 resource "github_branch_protection" "github-management-branch-protection" {
-  count = length(local.repositories_data.organization_repositories)
+  for_each = toset([for repo in local.repositories_data.organization_repositories : repo.name])
 
-  repository_id          = github_repository.github-management[count.index].node_id
+  repository_id          = github_repository.github-management[each.key].node_id
   pattern                = "main"
   enforce_admins         = true
   allows_deletions       = false
@@ -77,11 +77,12 @@ resource "github_branch_protection" "github-management-branch-protection" {
 }
 
 resource "github_repository_tag_protection" "github-management-tag-protection" {
-  count = length(local.repositories_data.organization_repositories)
+  for_each = toset([for repo in local.repositories_data.organization_repositories : repo.name])
 
-  repository = github_repository.github-management[count.index].name
+  repository = github_repository.github-management[each.key].name
   pattern    = "v*"
 }
+
 
 resource "github_team_repository" "team_repo" {
     for_each = {
