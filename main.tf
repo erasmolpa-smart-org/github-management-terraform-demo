@@ -28,14 +28,14 @@ resource "github_team_membership" "members" {
 
   team_id = github_team.team[each.key].id
 
-  username = each.value[0].username # Accede al primer elemento de la lista de miembros
-  role     = each.value[0].role     # Accede al primer elemento de la lista de miembros
+  username = each.value[0].username 
+  role     = each.value[0].role
 }
 
 resource "github_repository" "github-management" {
   for_each = {
-    for idx, repo in local.repositories_data.organization_repositories :
-    idx => repo
+    for repo in local.repositories_data.organization_repositories :
+    repo.name => repo
   }
 
   name               = each.value.name
@@ -85,12 +85,11 @@ resource "github_repository_tag_protection" "github-management-tag-protection" {
 
 resource "github_team_repository" "team_repo" {
   for_each = {
-    for repo in local.repositories_data.organization_repositories :
-    "${repo.team}-${repo.name}" => repo
+    for permission in local.teams_repository_permission_data.repository_permissions :
+    "${permission.repo_name}-${permission.team_name}" => permission
   }
 
-  team_id    = github_team.team[each.value.team].id
-  repository = each.value.name
-  permission = "push"
-
+  team_id    = github_team.team[each.value.team_name].id
+  repository = each.value.repo_name
+  permission = each.value.permission
 }

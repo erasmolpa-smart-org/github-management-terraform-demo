@@ -5,7 +5,6 @@ organization_repositories:
     has_issues: true
     has_wiki: true
     has_project: true
-    team: "backend_team"
 
   - name: "voxsmart-service-ui"
     description: "Backend core Framework team"
@@ -13,7 +12,6 @@ organization_repositories:
     has_issues: true
     has_wiki: true
     has_project: true
-    team: "frontend_team"
 
   - name: "voxsmart-service-sdk"
     description: "Backend core Framework team"
@@ -21,4 +19,3 @@ organization_repositories:
     has_issues: true
     has_wiki: true
     has_project: true
-    team: "frontend_team"
