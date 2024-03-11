@@ -55,12 +55,13 @@ resource "github_repository" "github-management" {
 
   vulnerability_alerts = true
 
+  #!FIXME. Enabling the security scan it makes the apply fail.
   security_and_analysis {
     secret_scanning {
-      status = "enabled"
+      status = "disabled"
     }
     secret_scanning_push_protection {
-      status = "enabled"
+      status = "disabled"
     }
   }
 }
