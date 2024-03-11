@@ -29,4 +29,3 @@
 7. **Self-Service:** Implement a self-service mechanism for developers to request access to repositories or teams, reducing administrative overhead and streamlining access management processes.
 
 8. **Code Owners:** Define code owners for repositories to automatically assign reviewers for pull requests, ensuring code quality and adherence to coding standards.
-
