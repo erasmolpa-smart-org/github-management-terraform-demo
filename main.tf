@@ -40,7 +40,7 @@ resource "github_repository" "github-management" {
 
   name               = each.value.name
   description        = each.value.description
-  visibility         = try(each.value.private, "private")
+  visibility         = try(each.value.visibility, "private")
   archive_on_destroy = try(each.value.archive_on_destroy, true)
   has_issues         = try(each.value.has_issues, true)
   has_wiki           = try(each.value.has_wiki, true)
