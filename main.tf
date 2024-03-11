@@ -65,16 +65,16 @@ resource "github_repository" "github-management" {
   #    }
   #  }
 }
+#!FIXME. Only possible for github pro account or if we make this repos public 
 
-resource "github_branch_protection" "github-management-branch-protection" {
-  for_each = toset([for repo in local.repositories_data.organization_repositories : repo.name])
-
-  repository_id          = github_repository.github-management[each.key].node_id
-  pattern                = "main"
-  enforce_admins         = true
-  allows_deletions       = false
-  require_signed_commits = true
-}
+#resource "github_branch_protection" "github-management-branch-protection" {
+#  for_each = toset([for repo in local.repositories_data.organization_repositories : repo.name])
+#  repository_id          = github_repository.github-management[each.key].node_id
+#  pattern                = "main"
+#  enforce_admins         = true
+#  allows_deletions       = false
+#  require_signed_commits = true
+#}
 
 #!FIXME. Only possible for github pro account or if we make this repos public 
 #  Error: POST https://api.github.com/repos/***/voxsamrt-service-api/tags/protection: 403 Upgrade to GitHub Pro or make this repository public to enable this feature. []
