@@ -136,7 +136,7 @@ This configuration is load as terraform locals as bellow:
     }
 ```
 
-**NOTE**: Please , remember this is just a first MVP or POC. For a production readyness implementation , we will need to modify this approach
+**NOTE**: Please, remember this is just a first MVP or POC. For a production readiness implementation, we will need to modify this approach
 
 
 ## Technical Notes: Assumptions and Future Improvements
@@ -173,7 +173,7 @@ Future improvements are based on the assumption that what is intended is to mana
     }
     ```
 
-**NOTE: Depending on the company size and the number of resources to be manage under IaC , we will need to split the states into multiples of them . For example , if we are expecting to create Thousands of repositories, will be not possible to maintain a single repository state. We can split by teams , (thousands of states files) or by any business unit . Another important aspect to be consider is the way we provide this IaC to the teams. Wrappers such as Terragrunt , can help a lot to simplify the way we manage environments and to increase the usability  **
+**NOTE:** Depending on the company size and the number of resources to be managed under IaC, we will need to split the states into multiple of them. For example, if we are expecting to create Thousands of repositories, will be not possible to maintain a single repository state. We can split by teams, (thousands of state files) or by any business unit. Another important aspect to be considered is the way we provide this IaC to the teams. Wrappers such as Terragrunt, can help a lot to simplify the way we manage environments and to increase the usability
 
 
 1. **Modular Terraform Configuration**:
@@ -206,7 +206,7 @@ Future improvements are based on the assumption that what is intended is to mana
 
 1. **Governance**:
     - *Description*: Enhancing the solution to support governance requirements, such as implementing policies for repository naming convention, defining code owners for repositories and including some security compliance settings by default.
-    - *Technical Approach*: Define naming conventions using Terraform variables and implement code owners configuration using GitHub's CODEOWNERS file.
+    - *Technical Approach*: Define naming conventions using Terraform variables and implement code owner's configuration using GitHub's CODEOWNERS file.
 
     ```hcl 
     vulnerability_alerts = true
