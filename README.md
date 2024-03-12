@@ -115,7 +115,7 @@ In the `config` folder of this project, you will find several YAML files contain
 
 This configuration is load as terraform locals as bellow:
 
-    ```hcl
+```hcl
     locals {
     repositories_data                = yamldecode(file("${path.module}/config/repositories.yaml"))
     members_data                     = yamldecode(file("${path.module}/config/members.yaml"))
@@ -134,7 +134,8 @@ This configuration is load as terraform locals as bellow:
         ]
     ])
     }
-    ```
+```
+
 **NOTE**: Please , remember this is just a first MVP or POC. For a production readyness implementation , we will need to modify this approach
 
 
@@ -179,50 +180,105 @@ Future improvements are based on the assumption that what is intended is to mana
     - *Description*: Breaking down the Terraform configuration into separate modules for each resource type (e.g., repositories, teams) will improve code organization and maintainability.
     - *Technical Approach*: Create individual Terraform modules for managing repositories, teams, and memberships with reusable configurations.
   
-```hcl
+    ```hcl
 
-module "repositories" {
-  source = "source = "git::https://github.com/erasmolpa-smart-org/github-repositories-terraform-module.git?ref=v1.0.0""
-  ...
-  .....
-  .......
-}
+    module "repositories" {
+    source = "git::https://github.com/erasmolpa-smart-org/github-repositories-terraform-module.git?ref=v1.0.0"
+    ...
+    .....
+    .......
+    }
 
-module "teams" {
-  source = "source = "git::https://github.com/erasmolpa-smart-org/github-teams-terraform-module.git?ref=v1.0.0""
-  ....
-  .....
-  .......
-}
+    module "teams" {
+    source = "git::https://github.com/erasmolpa-smart-org/github-teams-terraform-module.git?ref=v1.0.0"
+    ....
+    .....
+    .......
+    }
 
-module "members" {
-  source = "source = "git::https://github.com/erasmolpa-smart-org/github-members-terraform-module.git?ref=v1.0.0""
-  ....
-  .....
-  .......
-}
-```
+    module "members" {
+    source = "git::https://github.com/erasmolpa-smart-org/github-members-terraform-module.git?ref=v1.0.0"
+    ....
+    .....
+    .......
+    }
+    ```
 
-1. **Scalability and Governance**:
-    - *Description*: Enhancing the solution to support scalability and governance requirements, such as implementing policies for repository naming conventions and defining code owners for repositories.
+1. **Governance**:
+    - *Description*: Enhancing the solution to support governance requirements, such as implementing policies for repository naming convention, defining code owners for repositories and including some security compliance settings by default.
     - *Technical Approach*: Define naming conventions using Terraform variables and implement code owners configuration using GitHub's CODEOWNERS file.
+
+    ```hcl 
+    vulnerability_alerts = true
+
+    security_and_analysis {
+    secret_scanning {
+        status = "disabled"
+    }
+    secret_scanning_push_protection {
+        status = "disabled"
+    }
+    }
+
+    resource "github_branch_protection" "github_repo-branch-protection" {
+    for_each               = toset([for repo in local.repositories_data.organization_repositories : repo.name])
+    repository_id          = github_repository.github_repo[each.key].node_id
+    pattern                = "main"
+    enforce_admins         = true
+    allows_deletions       = false
+    require_signed_commits = true
+    }
+
+    resource "github_repository_tag_protection" "github_repo-tag-protection" {
+    for_each   = toset([for repo in local.repositories_data.organization_repositories : repo.name])
+    repository = github_repository.github_repo[each.key].name
+    pattern    = "v*"
+    }
+    ```
 
 2. **Self-Service Provisioning**:
     - *Description*: Implementing self-service capabilities for developers to request repository creation and manage access permissions through an automated process.
     - *Technical Approach*: Develop a custom web application or use GitHub Actions to automate repository creation and permission management based on user requests.
 
+    ```hcl
+
+    repositories_data  = yamldecode(file("${path.module}/config/repositories.yaml"))
+
+    module "repositories" {
+
+    source             = "git::https://github.com/erasmolpa-smart-org/github-repositories-terraform-module.git?ref=v1.0.0"
+
+    ...
+    .....
+    .......
+    }
+    ```
+    and the team repositories 
+
+    ```yaml
+    repositories:
+    - name: "voxsmart-service-api"
+        teams:
+        - name: "backend_team"
+            permission: "admin"
+        - name: "frontend_team"
+            permission: "pull"
+    - name: "voxsmart-service-ui"
+        teams:
+        - name: "frontend_team"
+            permission: "admin"
+    - name: "voxsmart-service-sdk"
+        teams:
+        - name: "frontend_team"
+            permission: "push"
+        - name: "backend_team"
+            permission: "push"
+    ```
+
+
 3. **Import Existing Resources**:
     - *Description*: Adding functionality to import existing repositories, teams, and user memberships from the GitHub organization before fully implementing Terraform. This will ensure a seamless transition and preserve existing configurations.
     - *Technical Approach*: Use Terraform's `import` feature to import existing resources into Terraform state files, allowing for further management using Terraform.
 
-4. **Naming Convention Enforcement**:
-    - *Description*: Enforcing naming conventions for repositories to maintain consistency and improve clarity across the organization's codebase.
-    - *Technical Approach*: Define naming conventions in Terraform variables and use input validation to enforce these conventions during resource creation.
+[workaround](https://github.com/chrisanthropic/terraform-import-github-organization/blob/master/terraform-import-github-org.sh)
 
-5. **Code Owners Configuration**:
-    - *Description*: Implementing code owners configuration for repositories to designate individuals or teams responsible for code review and approvals.
-    - *Technical Approach*: Utilize GitHub's CODEOWNERS file and Terraform's GitHub provider to programmatically configure code owners for repositories.
-
-6. **Enhanced Collaboration**:
-    - *Description*: Promoting a collaborative and service-oriented approach to infrastructure management, fostering cross-team collaboration and knowledge sharing.
-    - *Technical Approach*: Implement features such as automated notifications, documentation generation, and centralized communication channels to facilitate collaboration among teams.
