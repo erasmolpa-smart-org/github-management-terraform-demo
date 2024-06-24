@@ -1,6 +1,6 @@
 # GitHub Management Terraform Demo
 
-This project is a Terraform project for creating resources in GitHub.
+This project is a Terraform project that creates resources in GitHub.
 
 ## Local Environment Setup
 
@@ -59,13 +59,13 @@ In the `config` folder of this project, you will find several YAML files contain
 
     ```yaml
     organization_repositories:
-    - name: "voxsmart-service-api"
+    - name: "myorganization-service-api"
         description: "Main business Service API"
         visibility: private
-    - name: "voxsmart-service-ui"
+    - name: "myorganization-service-ui"
         description: "Front Service UI"
         visibility: private
-    - name: "voxsmart-service-sdk"
+    - name: "myorganization-service-sdk"
         description: "Backend core SDK Framework"
         visibility: public
     ```
@@ -95,17 +95,17 @@ In the `config` folder of this project, you will find several YAML files contain
 
     ```yaml
     repositories:
-    - name: "voxsmart-service-api"
+    - name: "myorganization-service-api"
         teams:
         - name: "backend_team"
             permission: "admin"
         - name: "frontend_team"
             permission: "pull"
-    - name: "voxsmart-service-ui"
+    - name: "myorganization-service-ui"
         teams:
         - name: "frontend_team"
             permission: "admin"
-    - name: "voxsmart-service-sdk"
+    - name: "myorganization-service-sdk"
         teams:
         - name: "frontend_team"
             permission: "push"
@@ -257,17 +257,17 @@ Future improvements are based on the assumption that what is intended is to mana
 
     ```yaml
     repositories:
-    - name: "voxsmart-service-api"
+    - name: "myorganization-service-api"
         teams:
         - name: "backend_team"
             permission: "admin"
         - name: "frontend_team"
             permission: "pull"
-    - name: "voxsmart-service-ui"
+    - name: "myorganization-service-ui"
         teams:
         - name: "frontend_team"
             permission: "admin"
-    - name: "voxsmart-service-sdk"
+    - name: "myorganization-service-sdk"
         teams:
         - name: "frontend_team"
             permission: "push"
